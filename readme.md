@@ -70,7 +70,7 @@ It is a firmware implementation decision.
 - Cross-system comparison with identical hardware but different firmware
 - Consistent reproduction under controlled test conditions
 
-
+<img width="1642" height="820" alt="90ms dpc" src="https://github.com/user-attachments/assets/1b36d0ad-3f67-44cc-8284-50af4a19afa0" />
   
 ## Methodology
 
