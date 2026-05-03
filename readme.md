@@ -69,8 +69,19 @@ It is a firmware implementation decision.
 - Correlation between AML execution paths and latency events
 - Cross-system comparison with identical hardware but different firmware
 - Consistent reproduction under controlled test conditions
+- Reproducible 80–100ms spikes during screen-off → resume cycles
 
-<img width="1642" height="820" alt="90ms dpc" src="https://github.com/user-attachments/assets/1b36d0ad-3f67-44cc-8284-50af4a19afa0" />
+## Example Case
+
+- Vendor: Dell
+- CPU: 14500
+
+Observed:
+- DPC spike ~80ms
+- Module: ACPI.sys
+- Trigger: screen-off → resume
+
+<img width="1642" height="820" alt="80ms dpc" src="https://github.com/user-attachments/assets/1b36d0ad-3f67-44cc-8284-50af4a19afa0" />
   
 ## Methodology
 
