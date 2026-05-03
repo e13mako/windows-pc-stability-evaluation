@@ -69,6 +69,8 @@ It is a firmware implementation decision.
 - Correlation between AML execution paths and latency events
 - Cross-system comparison with identical hardware but different firmware
 - Consistent reproduction under controlled test conditions
+
+
   
 ## Methodology
 
@@ -149,4 +151,3 @@ Understanding that structure makes the behavior predictable.
 Latency is not a hardware limitation — it is a firmware decision.
 
 Independent research based on real-world systems and trace analysis.
-```
