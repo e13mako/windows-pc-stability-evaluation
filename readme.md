@@ -55,31 +55,40 @@ While (Condition)
 {
     Sleep(4)
 }
+```
 
 When executed inside ACPI power transition paths, this loop introduces blocking delays that manifest as input lag and UI freezes.
 
 This is not a hardware limitation.
+
 It is a firmware implementation decision.
 
-Evidence
-WPA traces showing DPC spikes during ACPIDevicePowerDpc
-Correlation between AML execution paths and latency events
-Cross-system comparison with identical hardware but different firmware
-Consistent reproduction under controlled test conditions
-Methodology
-Clean OS environments (minimal third-party interference)
-Controlled screen-off / wake cycles
-WPR/WPA trace capture and timing analysis
-AML extraction using standard tooling (acpidump, iasl)
-Structural comparison across firmware implementations
-Scope of Investigation
-Area	Description
-ACPI.sys behavior	ACPIDevicePowerDpc profiling
-AML analysis	DSDT/SSDT extraction and review
-WPR/WPA tracing	Event-level correlation
-Cross-system comparison	Multi-vendor, Intel and AMD platforms
-Firmware lineage	Pattern classification and similarities
-A Broader Pattern
+## Evidence
+
+- WPA traces showing DPC spikes during `ACPIDevicePowerDpc`
+- Correlation between AML execution paths and latency events
+- Cross-system comparison with identical hardware but different firmware
+- Consistent reproduction under controlled test conditions
+  
+## Methodology
+
+- Clean OS environments (minimal third-party interference)
+- Controlled screen-off / wake cycles
+- WPR/WPA trace capture and timing analysis
+- AML extraction using standard tooling (acpidump, iasl)
+- Structural comparison across firmware implementations
+
+## Scope of Investigation
+
+| Area                    | Description                                |
+|-------------------------|--------------------------------------------|
+| ACPI.sys behavior       | ACPIDevicePowerDpc profiling               |
+| AML analysis            | DSDT/SSDT extraction and review            |
+| WPR/WPA tracing         | Event-level correlation                    |
+| Cross-system comparison | Multi-vendor, Intel and AMD platforms      |
+| Firmware lineage        | Pattern classification and similarities    |
+
+## A Broader Pattern
 
 Similar AML loop structures appear across multiple vendors with near-identical control flow.
 
@@ -87,41 +96,47 @@ This suggests a shared design lineage or common reference implementation rather 
 
 This work focuses on structural behavior, not vendor attribution.
 
-Repository Structure
+## Repository Structure
+
+```text
 docs/        Findings and analysis
 aml/         Extracted AML structures
 analysis/    Pattern classification
 data/        Trace data and measurements
 templates/   WPA evaluation templates
-Limitations
+```
+
+## Limitations
 
 Some implementation details are intentionally abstracted to avoid exposing vendor-specific internals prematurely.
 
 This is a structural and behavioral study, not a vulnerability disclosure.
 
-Status
-Initial latency characterization: complete
-AML pattern identification: complete
-Cross-platform classification: in progress
-Firmware lineage analysis: in progress
-Public findings document: planned
-Contributing / Data Sharing
+## Status
+
+- Initial latency characterization: complete
+- AML pattern identification: complete
+- Cross-platform classification: in progress
+- Firmware lineage analysis: in progress
+- Public findings document: planned
+
+## Contributing / Data Sharing
 
 If you have observed similar behavior:
 
-Post-idle freezes on Windows 11
-Input lag after screen-off
-Unexplained DPC spikes
+- Post-idle freezes on Windows 11
+- Input lag after screen-off
+- Unexplained DPC spikes
 
 You can contribute by opening a Discussion with:
 
-System model and configuration
-WPA trace data (if available)
-Reproduction steps
+- System model and configuration
+- WPA trace data (if available)
+- Reproduction steps
 
 Cross-system data significantly improves pattern validation.
 
-Conclusion
+## Conclusion
 
 Latency is not determined solely by hardware capability.
 
@@ -129,7 +144,7 @@ It emerges from the interaction between firmware, OS, and power management desig
 
 Understanding that structure makes the behavior predictable.
 
-Statement
+## Statement
 
 Latency is not a hardware limitation — it is a firmware decision.
 
