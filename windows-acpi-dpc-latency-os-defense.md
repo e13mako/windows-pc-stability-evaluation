@@ -134,7 +134,7 @@ The 80ms spike that bypasses the watchdog but cumulatively destroys UI responsiv
 ## Related
 
 - [ACPI DPC Latency Study — Root Cause Analysis](https://github.com/e13mako/windows-pc-stability-evaluation)
-- [Bug Report: OptiPlex SFF 7020 — 86ms DPC Spike via DellRtd3](../bug_reports/optiplex_7020.md) *(planned)*
+- [Analysis OptiPlex SFF 7020 — 86ms DPC Spike via DellRtd3](../analysis/analysis-dell-7020.md) 
 
 ---
 
