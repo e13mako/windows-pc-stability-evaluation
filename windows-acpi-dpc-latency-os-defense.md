@@ -1,8 +1,14 @@
-# What Windows Must Also Do: A Proposal for Modern Standby DPC Latency Defense
+# Modern Standby DPC Latency: What Windows Must Do When Firmware Misbehaves
 
 > **Status:** Draft — Independent research based on real-world ETW trace analysis  
 > **Platform:** Windows 11 24H2 / 25H2  
 > **Focus:** ACPI.sys / Modern Standby / Firmware interaction
+
+---
+
+## One-Sentence Summary
+
+Repeated 80–100ms ACPI DPC stalls fall below the watchdog threshold but cumulatively degrade UI responsiveness, and Windows currently has no mechanism to mitigate them.
 
 ---
 
@@ -21,6 +27,7 @@ This document addresses a separate but equally important question:
 ## The Watchdog Gap
 
 Windows currently provides `DPC_WATCHDOG_VIOLATION` (bugcheck `0x133`) as its primary defense against DPC overruns.
+This is not a corner case — it is a reproducible and observable behavior across multiple systems.
 
 | Spike Duration | OS Response |
 |---|---|
@@ -118,6 +125,10 @@ Given that OEM firmware quality varies dramatically across vendors — as docume
 
 The 80ms spike that bypasses the watchdog but cumulatively destroys UI responsiveness represents a **blind spot in the Windows power management architecture** that warrants dedicated engineering attention.
 
+This is not merely an optimization problem.
+
+It is a responsibility boundary between firmware and the operating system.
+
 ---
 
 ## Summary of Proposed Changes
@@ -134,8 +145,7 @@ The 80ms spike that bypasses the watchdog but cumulatively destroys UI responsiv
 ## Related
 
 - [ACPI DPC Latency Study — Root Cause Analysis](https://github.com/e13mako/windows-pc-stability-evaluation)
-- [Analysis OptiPlex SFF 7020 — 86ms DPC Spike via DellRtd3](../analysis/analysis-dell-7020.md) 
-
+- [Analysis: OptiPlex SFF 7020 — 86ms DPC Spike](https://github.com/e13mako/windows-pc-stability-evaluation/blob/main/docs/analysis-dell-7020.md)
 ---
 
 *Independent research. No vendor attribution intended. Based on ETW trace analysis across multiple production systems.*
