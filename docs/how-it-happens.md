@@ -1,4 +1,4 @@
-## How ACPI Causes DPC Latency
+# How ACPI Causes DPC Latency
 
 ## Overview
 
