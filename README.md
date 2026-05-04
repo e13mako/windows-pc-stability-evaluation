@@ -158,6 +158,12 @@ You can contribute by opening a Discussion with:
 
 Cross-system data significantly improves pattern validation.
 
+## Mitigation (Temporary Workarounds)
+
+If you are experiencing these issues in production environments, temporary mitigation strategies are available:
+
+- [Mitigation Strategies](docs/mitigation.md)
+
 ## Conclusion
 
 Latency is not determined solely by hardware capability.
