@@ -13,14 +13,14 @@ This document explains how ACPI firmware behavior can lead to observable DPC lat
 3. ACPI power transition begins
 4. AML methods execute (DSDT/SSDT)
 5. Blocking loop occurs:
-   
+
+```asl
+   While (Condition)
+   {
+       Sleep(4)
+   }
 ```
-asl
-While (Condition)
-{
-    Sleep(4)
-}
-```
+
 6. ACPI.sys waits for completion
 7. DPC queue is delayed
 8. System input appears frozen
