@@ -33,6 +33,15 @@ This points to firmware — specifically ACPI implementation — as the dominant
 
 ---
 
+## Documentation
+
+- [How it happens](docs/how-it-happens.md)
+- [AML patterns](docs/patterns.md)
+- [Evaluation methodology](docs/evaluation.md)
+- [Vendor observations](docs/vendors.md)
+
+---
+
 ## Reproducible Symptom
 
 On affected systems:
